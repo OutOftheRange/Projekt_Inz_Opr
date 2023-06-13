@@ -71,16 +71,11 @@ const MyProfile = () => {
                     <div className="row">
                         <h4 className="text-profile">E-mail: <span className="user-data-profile">{userData.email ?? "No data"}</span></h4>
                     </div>
-                    <div className="row">
-                        <h4 className="text-profile">
-                            Helped: <span className="user-data-profile">{userData.advertsUserCanHelp ?? "0"} times </span>
-                        </h4>
-                    </div>
                     <div className="row mt-2">
                         <div className="col-lg-4 col-sm-12 mt-2 col-md-12">
                             <Link to={routingUrl.pathToUsersAdverts + "/1" + `/${localStorage.userId}`}>
                                 <button className="btn btn-warning btn-block btn-lg w-100 link-buttons ">
-                                    View users adverts
+                                    View users sell adverts
                                 </button>
                             </Link>
                         </div>

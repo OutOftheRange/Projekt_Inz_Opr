@@ -82,7 +82,7 @@ const AdvertUpdateForm = () => {
 
                             <div className="mx-auto w-75">
                                 <label htmlFor="helpType" className="mb-5">
-                                    Help type
+                                    Advert type
                                 </label>
                                 <br />
                                 <Field
@@ -91,7 +91,7 @@ const AdvertUpdateForm = () => {
                                     className="up form-select drop-down border-primary"
                                 >
                                     <option defaultValue={null}>
-                                        Choose help type
+                                        Choose advert type
                                     </option>
                                     {Object.keys(
                                         generalData?.helpTypes ?? []
