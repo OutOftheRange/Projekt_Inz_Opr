@@ -57,7 +57,7 @@ const OtherUserProfile = () => {
                         <div className="col-lg-12">
                             <Link to={routingUrl.pathToUsersAdverts + "/1" + `/${params.creatorId}`}>
                                 <button className="btn btn-warning btn-block btn-lg align-items-center justify-content-center w-100 link-buttons ">
-                                    View users adverts
+                                    View users sell adverts
                                 </button>
                             </Link>
                         </div>

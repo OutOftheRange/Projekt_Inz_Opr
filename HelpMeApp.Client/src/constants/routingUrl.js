@@ -13,7 +13,8 @@ const routingUrl = {
     pathToProfileModification: "/edit-user",
     pathToUsersAdverts: "/user-adverts",
     pathToAdvertUpdateForm: "/update-advert",
-    pathToOtherUserProfile: "/user-profile"
+    pathToOtherUserProfile: "/user-profile",
+    pathToBuyPage: "/buy"
 };
 
 export default routingUrl;

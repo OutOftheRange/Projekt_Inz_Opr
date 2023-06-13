@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Net.Sockets;
 using Bogus;
 using HelpMeApp.DatabaseAccess.Entities.AdvertEntity;
 using HelpMeApp.DatabaseAccess.Entities.AppUserEntity;
@@ -34,16 +37,16 @@ namespace HelpMeApp.DatabaseAccess.Seeders
 
         public static List<Category> Categories = new List<Category>()
         {
-            new Category(){ Name = "Food" },
-            new Category(){ Name = "Clothes" },
-            new Category(){ Name = "Evacuation" },
-            new Category(){ Name = "Repairs" }
+            new Category(){ Name = "TV" },
+            new Category(){ Name = "Smartphones" },
+            new Category(){ Name = "Computers" },
+            new Category(){ Name = "Laptops" }
         };
 
         public static List<HelpType> HelpTypes = new List<HelpType>()
         {
-            new HelpType(){ Name = "Need help" },
-            new HelpType(){ Name = "Can help" }
+            new HelpType(){ Name = "Want to buy" },
+            new HelpType(){ Name = "Want to sell" }
         };
 
         public static List<SenderRole> SenderRoles = new List<SenderRole>()
@@ -67,64 +70,17 @@ namespace HelpMeApp.DatabaseAccess.Seeders
             Randomizer.Seed = new Random(10000);
 
             var advertHeadersCanHelp = new[] {
-                "I can provide you with drinking water. I can give you as much drinking water as you need. I have a well on my yard. It is absolutely free, of course.",
-                "If you need fresh fruits and vegetables. I own a shop with fruits and vegetables. You can come and I will give you a little bit of everything!",
-                "I have extra clothing for you. I have a large collection of clothing that I would be happy to give to refugees in need.",
-                "Do you need blankets and bedding?. I have blankets and bedding that are in good condition and I would be happy to give them to refugees in need.",
-                "I can give you hygiene products. I have a variety of hygiene products, such as soap and shampoo, that I would be happy to give to refugees in need.",
-                "I have furniture for you. I have furniture that is in good condition and I would be happy to give it to refugees in need.",
-                "Hey! Do you need Bicycles?. I have bicycles that are in good condition and I would be happy to give them to refugees in need.",
-                "I can ptovide you with transportation. I can provide transportation to refugees who need it, such as to appointments or job interviews.",
-                "Language Lessons FOR FREE. I can offer language lessons to refugees who want to learn a new language.",
-                "I am Job Search Assistant, let me help you. I can help refugees with their job search by reviewing resumes, providing job leads, and offering interview tips.",
-                "I can give you some pieces of legal advice. I can offer legal advice to refugees who may be dealing with immigration issues or other legal matters.",
-                "I can help you with childcare. I can provide childcare to refugees who need it, such as while they attend appointments or job interviews.",
-                "Do you need help with pet care?. I can provide pet care to refugees who need it, such as feeding and walking their pets.",
-                "I can help you with medical assistance. I can provide medical assistance to refugees who may not have access to healthcare.",
-                "I can provide you some counseling help. I can offer counseling services to refugees who may be dealing with trauma or other emotional issues.",
-                "If you need any translation services. I can offer translation services to refugees who may need help communicating in a new language.",
-                "If you need help with technology support for your job. I can offer technology support to refugees who may not be familiar with using computers or the internet.",
-                "Interest club for you and your mental health!. I can offer entertainment options to refugees who may need a break from their daily routines, such as movie nights or game nights.",
-                "I organize community events for you. I can organize community events for refugees to meet and connect with others in their new community.",
-                "I can provide you with legal documents assistance. I can help refugees with the paperwork required for visas, passports, and other legal documents.",
-                "If your children needs help with tutoring. I can offer tutoring services to refugee children who may need extra help with schoolwork.",
-                "Do you need some art lessons?. I can offer art lessons to refugees who want to explore their creativity and express themselves through art.",
-                "Let's go to music lessons together. I can offer music lessons to refugees who want to learn how to play an instrument or sing.",
-                "Fitness classes for your mental and physical help. I can offer fitness classes to refugees who want to stay active and healthy.",
-                "I am a dentist, if you need consultation come to me. I can offer dental care to refugees who may not have access to dental services.",
-                "My hospital can help you with eye care. I can offer eye care to refugees who may not have access to eye exams or glasses."
+                "Zipper", "Box", "Lamp", "Shade", "Wallet", "Shampoo", "Chocolate", "Puddle",
+                "Toothpaste", "Seat", "Belt", "Paint", "Brush", "Knife", "Shoes"
             };
 
             var advertHeadersNeedsHelp = new[] {
-                "I need food, please help. I need help feeding my family. Any assistance would be greatly appreciated.",
-                "I need shelter very much. I need a safe place to stay. Any help finding housing would be greatly appreciated.",
-                "My kids almost have no clothes. I am in need of clothing for myself and my family.",
-                "Please help with medical assistance. I am in need of medical assistance for myself and a family member.",
-                "Do you have extra hygiene products?. I am in need of hygiene products, such as soap and shampoo.",
-                "Please help me to find a job. I am a refugee of war and I need help finding employment.",
-                "I need some advices from lawyer. I am a refugee of war and I need legal advice regarding my immigration status or other legal matters.",
-                "Do you know any language lessons?. I need help learning the language of my new country.",
-                "I need babysitter for few hours a day. I need help with childcare while I attend appointments or job interviews.",
-                "I need food for my cats. I need help with pet care, such as feeding and walking my pets.",
-                "I have big emotional issues. I need counseling services to help me deal with trauma and emotional issues related to my experience as a refugee of war.",
-                "Please help with translation. I need help communicating in the language of my new country.",
-                "My grandma needs help with techonoligies. I need help how to learn my grandma use computers and the internet.",
-                "Is there any interest clubs?. I need help finding entertainment options to help me cope with the stress.",
-                "I want to visit local community events. I need help finding and participating in community events to meet and connect with others in my new country.",
-                "I need legal documents assistance. I need help with paperwork related to my immigration status or other legal documents.",
-                "I need a tutor for my children. I need tutoring services for my children who may need extra help with schoolwork.",
-                "Is there any art lessons?. I need help finding and participating in art lessons to express myself creatively.",
-                "I am looking for music lessons for my son. I need help finding and participating in music lessons to learn how to play an instrument or sing.",
-                "I am looking for fitness classes. I need help finding and participating in fitness classes to stay healthy and active.",
-                "I need dentist consultaion. I need help finding for dental care.",
-                "I have problems with my eyes, where can i find a doctor?. I need help finding eye exams and glasses.",
+                "Pencil", "Pool", "Stick", "Outlet", "Twister", "Conditioner", "Socks", "Paint", "Brush", "Knife", "Shoes"
             };
 
             var Towns = new[]
             {
-                "Kyiv", "Kharkiv", "Lviv", "Odesa", "Kherson", "Vinnytsia", "Donets'k", "Luhans'k", "Dnipro", "Kryvyi Rih", "Sevastopol'",
-                "Makiivka", "Mykolaiv", "Zaporizhzhia", "Simferopol'", "Chernihiv", "Poltava", "Khmelnytskyi", "Cherkasy", "Chernivtsi",
-                "Zhytomyr", "Sumy", "Rivne", "Horlivka", "Ivano-Frankivs'k", "Ternopil'", "Kropyvnytskyi", "Luts'k"
+                "Kraków", "Łódź", "Wrocław", "Poznań", "Gdańsk", "Szczecin", "Bydgoszcz", "Lublin", "Białystok", "Katowice"
             };
 
             var personalInfo = new[]
@@ -153,16 +109,7 @@ namespace HelpMeApp.DatabaseAccess.Seeders
 
             var phoneNumbers = new[]
             {
-                "380998664275", "380958465131", "380948664275", "380974862153",
-                "380997861176", "380958468499", "380948664275", "380974845684",
-                "380995921563", "380951354986", "380941354886", "380972135486",
-                "380994153565", "380958475123", "380941231545", "380971654846",
-                "380991651879", "380958451668", "380948745621", "380978468456",
-                "380991654984", "380951535148", "380943211486", "380976185412",
-                "380994135194", "380956954681", "380948895475", "380973514684",
-                "380991894685", "380951651847", "380943218456", "380971864651",
-                "380996894581", "380959564843", "380948745612", "380974684487",
-                "380996468412", "380951548331", "380941848688", "380971564846"
+                "+48 69 357 8417", "+48 69 799 4560", "+48 69 301 0250", "+48 69 477 9275", "+48 69 094 5549", "+48 69 923 8577"
             };
 
             var reportFaker = new Faker<Report>()
@@ -183,7 +130,7 @@ namespace HelpMeApp.DatabaseAccess.Seeders
 
             Chats.AddRange(chatFaker.Generate(300));
 
-            var advertNeedsHelpFaker = new Faker<Advert>()
+            var advertNeedsHelpFaker = new Faker<Advert>() //sell
                .RuleFor(a => a.Header, f => f.PickRandom(advertHeadersNeedsHelp))
                .RuleFor(a => a.Location, f => f.PickRandom(Towns))
                .RuleFor(a => a.HelpTypeId, f => 1)
@@ -192,7 +139,7 @@ namespace HelpMeApp.DatabaseAccess.Seeders
                .RuleFor(a => a.CreationDate, f => f.Date.Between(new DateTime(2023, 02, 01), new DateTime(2023, 02, 21)))
                .RuleFor(a => a.ClosureDate, f => f.PickRandom(default, f.Date.Between(new DateTime(2023, 02, 02), new DateTime(2023, 02, 22))));
 
-            var advertCanHelpFaker = new Faker<Advert>()
+            var advertCanHelpFaker = new Faker<Advert>() //buy
                .RuleFor(a => a.Header, f => f.PickRandom(advertHeadersCanHelp))
                .RuleFor(a => a.Location, f => f.PickRandom(Towns))
                .RuleFor(a => a.HelpTypeId, f => 2)

@@ -38,8 +38,8 @@ namespace HelpMeApp.DatabaseAccess.Initializers
 
             foreach (var advert in DatabaseSeeder.Adverts)
             {
-                advert.Info = advert.Header.Split(new[] {'.'}, 2)[1];
-                advert.Header = advert.Header.Split(new[] {'.'}, 2)[0];
+                advert.Info = advert.Header;
+                advert.Header = advert.Header;
                 advert.CreatorId = DatabaseSeeder.AppUsers[Random.Shared.Next(0, DatabaseSeeder.AppUsers.Count)].Id;
                 advert.CategoryId = DatabaseSeeder.Categories[Random.Shared.Next(0, DatabaseSeeder.Categories.Count)].Id;
                 advert.TermsId = DatabaseSeeder.Terms[Random.Shared.Next(0, DatabaseSeeder.Terms.Count)].Id;
@@ -65,16 +65,16 @@ namespace HelpMeApp.DatabaseAccess.Initializers
                 var possibleUsers = DatabaseSeeder.AppUsers.Where(x => x.Id != advert.CreatorId).ToList();
                 chat.UserId = possibleUsers[Random.Shared.Next(0, possibleUsers.Count)].Id;
             }
-            context.Chats.AddRange(DatabaseSeeder.Chats);
+            //context.Chats.AddRange(DatabaseSeeder.Chats);
 
-            context.SaveChanges();
+            //context.SaveChanges();
 
             foreach (var message in DatabaseSeeder.Messages)
             {
                 message.SenderRoleId = DatabaseSeeder.SenderRoles[Random.Shared.Next(0, DatabaseSeeder.SenderRoles.Count)].Id;
                 message.ChatId = DatabaseSeeder.Chats[Random.Shared.Next(0, DatabaseSeeder.Chats.Count)].Id;
             }
-            context.Messages.AddRange(DatabaseSeeder.Messages);
+            //context.Messages.AddRange(DatabaseSeeder.Messages);
 
             context.SaveChanges();
         }

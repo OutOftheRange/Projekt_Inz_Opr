@@ -13,33 +13,34 @@ const Header = () => {
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand href={routingUrl.pathToHomePage}>
-                    Help Me App
+                    Projekt
                 </Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Offcanvas id="basic-navbar-nav" placement="end">
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Help Me App</Offcanvas.Title>
+                        <Offcanvas.Title> Projekt</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav>
                             <Nav.Link
                                 href={routingUrl.pathToGiveHelpBoard + "/1"}
                             >
-                                Help someone
+                                Buy something
                             </Nav.Link>
                             <Nav.Link
                                 href={routingUrl.pathToGetHelpBoard + "/1"}
                             >
-                                Get help
+                                Sell something
                             </Nav.Link>
                         </Nav>
                         <Nav className="ms-auto">
                             {checkToken()
-                                ? <Nav.Link href={routingUrl.pathToChat}>
-                                Chat
-                                </Nav.Link>
-                                : <></>}
-                            {checkToken() ? <AuthorizedHeaderBlock /> : <UnauthorizedHeaderBlock />}
+                                ? (
+                                    <AuthorizedHeaderBlock />
+                                )
+                                : (
+                                    <UnauthorizedHeaderBlock />
+                                )}
                         </Nav>
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>

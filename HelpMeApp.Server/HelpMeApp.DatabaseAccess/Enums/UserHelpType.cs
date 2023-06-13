@@ -8,7 +8,7 @@ namespace HelpMeApp.DatabaseAccess.Enums
 {
     public enum UserHelpType
     {
-        NeedsHelp = 1,
-        CanHelp = 2
+        CanHelp = 1,
+        NeedsHelp = 2
     }
 }
